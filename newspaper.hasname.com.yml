@@ -1,0 +1,17 @@
+- hosts: all
+  become: yes
+  become_user: root
+  tasks:
+  - name: Upload code
+    synchronize:
+      delete: yes
+      dest: /srv/newspaper.hasname.com/
+      group: no
+      owner: no
+      src: ./
+  - name: Chown source codes to www-data
+    file:
+      group: www-data
+      owner: www-data
+      path: /srv/newspaper.hasname.com
+      recurse: yes
