@@ -2,16 +2,18 @@
 
 ## Database
 
-    CREATE TABLE posts (
-        id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-        url VARCHAR(255) NOT NULL,
-        title VARCHAR(255) NOT NULL,
-        content TEXT NOT NULL,
-        fingerprint BINARY(32) NOT NULL,
-        claimed_at INT UNSIGNED NOT NULL,
-        created_at INT UNSIGNED NOT NULL,
-        updated_at INT UNSIGNED NOT NULL
-    );
+    CREATE TABLE `posts` (
+      `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+      `url` varchar(255) NOT NULL,
+      `title` varchar(255) NOT NULL,
+      `content` text NOT NULL,
+      `fingerprint` binary(32) NOT NULL,
+      `claimed_at` int(10) unsigned NOT NULL,
+      `created_at` int(10) unsigned NOT NULL,
+      `updated_at` int(10) unsigned NOT NULL,
+      PRIMARY KEY (`id`),
+      UNIQUE KEY `url` (`url`,`fingerprint`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 ## License
 
